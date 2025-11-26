@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="18dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/naranjaclaro">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/bg_naranja_oscuro">
+
+
+
+        <TextView
+            android:id="@+id/tvHuespedNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Completo"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/playfairdisplayvariablefontwght"
+            android:textStyle="bold"
+            android:paddingBottom="4dp"/>
+        <TextView
+            android:id="@+id/tvHuespedTipoDocumento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Documento"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/latolight"
+            android:layout_marginBottom="4dp"/>
+
+
+
+        <TextView
+            android:id="@+id/tvHuespedDocumento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CC: 123456789"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/latolight"/>
+
+
+        <TextView
+            android:id="@+id/tvHuespedTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tel: 3001234567"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/latolight"
+            android:layout_marginBottom="12dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="4dp">
+
+            <Button
+                android:id="@+id/btnEditarHuesped"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="45dp"
+                android:text="Editar"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/latolight"
+                android:stateListAnimator="@null"
+                android:background="@drawable/bg_btn_redondo"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

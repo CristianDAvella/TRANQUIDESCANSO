@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        // espacios del menu
+
         val spacing = 16
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 "Huéspedes" -> {
-                    Toast.makeText(this, "Huéspedes pendiente", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, HuespedActivity::class.java)
+                    startActivity(intent)
                 }
                 "Reservas" -> {
                     Toast.makeText(this, "Reservas pendiente", Toast.LENGTH_SHORT).show()

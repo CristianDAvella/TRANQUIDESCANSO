@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/bg_btn_redondo"
+    android:layout_marginBottom="8dp"
+    android:elevation="2dp">
+
+    <TextView
+        android:id="@+id/tvHuesped"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Huésped: Juan Pérez"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvAgencia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agencia: Ninguna"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvFechas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Del 2025-11-26 al 2025-11-28"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvHabitaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Habitaciones: 2"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnVerDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Detalle"
+        android:textColor="#FFFFFF"
+        android:padding="8dp"
+        android:background="@drawable/bg_naranja_oscuro"
+        app:backgroundTint="@null"/>
+</LinearLayout>

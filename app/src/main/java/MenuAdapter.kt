@@ -28,7 +28,7 @@ class MenuAdapter(
         holder.nombre.text = item.nombre
         holder.icono.setImageResource(item.icono)
 
-        // --- Hacer el cuadro cuadrado ---
+        // cuadrado del menu
         holder.itemView.post {
             val width = holder.itemView.width
             holder.itemView.layoutParams.height = width

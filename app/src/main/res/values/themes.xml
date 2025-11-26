@@ -1,18 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Theme.TRANQUIDESCANSO" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-        <!-- Quitamos ActionBar -->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
 
-        <!-- Colores principales -->
+        <!-- Colores generales -->
         <item name="colorPrimary">@color/naranjaclaro</item>
         <item name="colorPrimaryVariant">@color/naranjaclaro</item>
         <item name="colorOnPrimary">@color/black</item>
-
-        <!-- Cambiar status bar -->
         <item name="android:statusBarColor">@color/naranjaclaro</item>
+
+        <!-- Desactivar tint automático -->
+        <item name="colorButtonNormal">@null</item>
+        <item name="android:colorButtonNormal">@null</item>
+
+        <!-- ❌ Quitar esto -->
+        <!-- <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button</item> -->
 
     </style>
 

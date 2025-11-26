@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        // --- Agregar espacio entre cuadros ---
+        // espacios del menu
         val spacing = 16
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
@@ -42,12 +42,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = MenuAdapter(menuItems) { item ->
             when(item.nombre) {
                 "Hotel" -> {
-                    // Abrir HotelActivity
                     val intent = Intent(this, HotelActivity::class.java)
                     startActivity(intent)
                 }
                 "Huéspedes" -> {
-                    // Aquí después abrimos HuespedesActivity
                     Toast.makeText(this, "Huéspedes pendiente", Toast.LENGTH_SHORT).show()
                 }
                 "Reservas" -> {

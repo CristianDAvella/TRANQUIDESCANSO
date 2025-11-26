@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class HotelAdapter(
@@ -28,28 +29,37 @@ class HotelAdapter(
 
     override fun onBindViewHolder(holder: HotelViewHolder, position: Int) {
         val hotel = hoteles[position]
+
+        // Asignar valores al item
         holder.nombre.text = hotel.nombre
         holder.direccion.text = hotel.direccion
         holder.categoria.text = hotel.categoria
 
-        // Botón Editar → abrir HotelDetalleActivity
-        holder.btnEditar.setOnClickListener {
-            val intent = Intent(it.context, HotelDetalleActivity::class.java)
-            intent.putExtra("hotelId", hotel.id)
-            intent.putExtra("hotelNombre", hotel.nombre)
-            intent.putExtra("hotelDireccion", hotel.direccion)
-            intent.putExtra("hotelCategoria", hotel.categoria)
-            it.context.startActivity(intent)
+        // --- BOTÓN EDITAR ---
+        holder.btnEditar.setOnClickListener { view ->
+            val ctx = view.context
+
+            val intent = Intent(ctx, HotelDetalleActivity::class.java).apply {
+                putExtra("hotelId", hotel.id)
+                putExtra("hotelNombre", hotel.nombre)
+                putExtra("hotelDireccion", hotel.direccion)
+                putExtra("hotelTelefono", hotel.telefono)
+                putExtra("hotelAno", hotel.ano)
+                putExtra("hotelCategoria", hotel.categoria)
+            }
+
+            ctx.startActivity(intent)
         }
 
-
-
-        // Botón Historial → abrir otra Activity o mostrar Toast
-        holder.btnHistorial.setOnClickListener {
-            // Por ahora, Toast
-            android.widget.Toast.makeText(it.context, "Historial ${hotel.nombre}", android.widget.Toast.LENGTH_SHORT).show()
+        // --- BOTÓN HISTORIAL ---
+        holder.btnHistorial.setOnClickListener { view ->
+            Toast.makeText(
+                view.context,
+                "Historial de ${hotel.nombre}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
-    override fun getItemCount() = hoteles.size
+    override fun getItemCount(): Int = hoteles.size
 }

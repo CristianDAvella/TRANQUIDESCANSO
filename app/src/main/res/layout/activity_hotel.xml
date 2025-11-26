@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/white">
 
-    <!-- Botón Agregar más ancho -->
-    <Button
+    <include layout="@layout/header"/>
+
+    <!-- 🔸 BOTÓN AGREGAR HOTEL -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAgregarHotel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agregar Hotel"
-        android:backgroundTint="@color/naranjaclaro"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        android:layout_marginBottom="12dp"
-        android:padding="12dp"
-        android:layout_gravity="center"/>
+        android:fontFamily="@font/latolight"
+        android:textSize="18sp"
+        android:padding="14dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_naranja_oscuro"
+        app:backgroundTint="@null"
+        />
 
-    <!-- RecyclerView -->
+
+    <!-- 🔸 LISTA DE HOTELES -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHoteles"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="8dp"/>
+        android:padding="8dp"/>
+
 </LinearLayout>
+

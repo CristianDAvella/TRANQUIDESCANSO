@@ -2,20 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:background="#ffdeac"
+    android:background="@color/naranjaclaro"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <!-- LOGO -->
     <ImageView
         android:id="@+id/logoHotel"
         android:layout_width="88dp"
         android:layout_height="88dp"
-        android:contentDescription="Logo"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:contentDescription="Logo" />
 
-    <!-- TEXTO -->
     <TextView
         android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
@@ -23,9 +21,7 @@
         android:layout_marginStart="15dp"
         android:fontFamily="@font/playfairdisplayvariablefontwght"
         android:text="@string/app_name"
-        android:textColor="#ffffff"
-        android:textSize="23sp"
-        android:textStyle="bold" />
-
-
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"/>
 </LinearLayout>

@@ -16,21 +16,40 @@ class HotelActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.rvHoteles)
         val btnAgregarHotel: Button = findViewById(R.id.btnAgregarHotel)
 
-        // Lista de hoteles de ejemplo
+        // Lista corregida con todos los parámetros
         val hoteles = listOf(
-            HotelItem(1, "Hotel Paraíso", "Calle 123, Bogotá", "4 estrellas"),
-            HotelItem(2, "Hotel Central", "Carrera 45, Medellín", "3 estrellas"),
-            HotelItem(3, "Hotel Playa", "Avenida 7, Cartagena", "5 estrellas")
+            HotelItem(
+                id = 1,
+                nombre = "Hotel Paraíso",
+                direccion = "Calle 123, Bogotá",
+                telefono = "3001234567",
+                ano = "1998",
+                categoria = "4 estrellas"
+            ),
+            HotelItem(
+                id = 2,
+                nombre = "Hotel Central",
+                direccion = "Carrera 45, Medellín",
+                telefono = "3145678910",
+                ano = "2005",
+                categoria = "3 estrellas"
+            ),
+            HotelItem(
+                id = 3,
+                nombre = "Hotel Playa",
+                direccion = "Avenida 7, Cartagena",
+                telefono = "3209876543",
+                ano = "2012",
+                categoria = "5 estrellas"
+            )
         )
 
-        // Configurar RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = HotelAdapter(hoteles)
 
-        // Botón agregar hotel → abrir detalle para agregar
         btnAgregarHotel.setOnClickListener {
             val intent = Intent(this, HotelDetalleActivity::class.java)
-            intent.putExtra("hotelId", 0) // 0 = nuevo hotel
+            intent.putExtra("hotelId", 0)
             startActivity(intent)
         }
     }

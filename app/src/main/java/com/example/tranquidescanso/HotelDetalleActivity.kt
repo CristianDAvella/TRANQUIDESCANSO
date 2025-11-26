@@ -10,83 +10,88 @@ import androidx.appcompat.app.AppCompatActivity
 
 class HotelDetalleActivity : AppCompatActivity() {
 
-    private var hotelId: Int = 0 // 0 indica que es nuevo hotel
+    private var hotelId: Int = 0 // 0 = nuevo hotel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel_detalle)
 
+        // Inputs
         val etNombre: EditText = findViewById(R.id.etNombreHotel)
         val etDireccion: EditText = findViewById(R.id.etDireccionHotel)
         val etTelefono: EditText = findViewById(R.id.etTelefonoHotel)
         val etAno: EditText = findViewById(R.id.etAnoHotel)
-        val btnActualizar: Button = findViewById(R.id.btnActualizarCategoria)
         val spinner: Spinner = findViewById(R.id.spinnerCategoria)
+        val btnGuardar: Button = findViewById(R.id.btnActualizarCategoria)
 
-        // Lista de categorías
+        // Categorías
         val categorias = listOf("1 estrella", "2 estrellas", "3 estrellas", "4 estrellas", "5 estrellas")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categorias)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        // ----- Revisar si vienen datos de un hotel existente -----
+        // Recibir datos desde el Adapter
         hotelId = intent.getIntExtra("hotelId", 0)
         val nombre = intent.getStringExtra("hotelNombre") ?: ""
         val direccion = intent.getStringExtra("hotelDireccion") ?: ""
+        val telefono = intent.getStringExtra("hotelTelefono") ?: ""
+        val ano = intent.getStringExtra("hotelAno") ?: ""
         val categoria = intent.getStringExtra("hotelCategoria") ?: ""
 
         if (hotelId != 0) {
-            // Editar hotel existente → llenar campos
+            // Editar hotel existente
             etNombre.setText(nombre)
             etDireccion.setText(direccion)
-            etTelefono.setText("") // se llenará desde BD
-            etAno.setText("")
+            etTelefono.setText(telefono)
+            etAno.setText(ano)
+
             val indexCategoria = categorias.indexOf(categoria)
             if (indexCategoria >= 0) spinner.setSelection(indexCategoria)
 
-            btnActualizar.text = "Actualizar categoría"
+            btnGuardar.text = "Actualizar hotel"
+
         } else {
-            // Nuevo hotel → campos vacíos
+            // Nuevo hotel
             etNombre.setText("")
             etDireccion.setText("")
             etTelefono.setText("")
             etAno.setText("")
             spinner.setSelection(0)
-            btnActualizar.text = "Agregar hotel"
+
+            btnGuardar.text = "Agregar hotel"
         }
 
-        // ----- Acción del botón -----
-        btnActualizar.setOnClickListener {
+        btnGuardar.setOnClickListener {
             val nombreHotel = etNombre.text.toString()
             val direccionHotel = etDireccion.text.toString()
             val telefonoHotel = etTelefono.text.toString()
             val anoHotel = etAno.text.toString()
-            val nuevaCategoria = spinner.selectedItem.toString()
+            val categoriaSeleccionada = spinner.selectedItem.toString()
 
-            if (nombreHotel.isBlank() || direccionHotel.isBlank()) {
-                Toast.makeText(this, "Debe llenar nombre y dirección", Toast.LENGTH_SHORT).show()
+            // Validaciones básicas
+            if (nombreHotel.isBlank() || direccionHotel.isBlank() || telefonoHotel.isBlank() || anoHotel.isBlank()) {
+                Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (hotelId == 0) {
-                // Crear nuevo hotel
+                // Nuevo hotel
                 Toast.makeText(
                     this,
-                    "Nuevo hotel '$nombreHotel' agregado con categoría $nuevaCategoria",
+                    "Nuevo hotel agregado: $nombreHotel ($categoriaSeleccionada)",
                     Toast.LENGTH_SHORT
                 ).show()
-                // Aquí Cristian / Brandon conectarán a la BD para INSERT
+
             } else {
-                // Actualizar hotel existente
+                // Actualizar hotel
                 Toast.makeText(
                     this,
-                    "Hotel ID $hotelId actualizado a categoría $nuevaCategoria",
+                    "Hotel ID $hotelId actualizado correctamente",
                     Toast.LENGTH_SHORT
                 ).show()
-                // Aquí se conectará a la BD para UPDATE
             }
 
-            finish() // cerrar pantalla y volver a lista
+            finish()
         }
     }
 }

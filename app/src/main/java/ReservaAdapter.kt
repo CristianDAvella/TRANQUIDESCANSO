@@ -9,15 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ReservaAdapter(
     private val lista: List<ReservaItem>,
-    private val onDetalleClick: (ReservaItem) -> Unit
+    private val onDetalleClick: (ReservaItem) -> Unit,
+    private val onEditarClick: (ReservaItem) -> Unit,
+    private val onCancelarClick: (ReservaItem) -> Unit
 ) : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
 
     inner class ReservaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvHuesped: TextView = view.findViewById(R.id.tvHuesped)
-        val tvAgencia: TextView = view.findViewById(R.id.tvAgencia)
-        val tvFechas: TextView = view.findViewById(R.id.tvFechas)
-        val tvHabitaciones: TextView = view.findViewById(R.id.tvHabitaciones)
-        val btnVerDetalle: Button = view.findViewById(R.id.btnVerDetalle)
+        val tvNombreHuesped: TextView = view.findViewById(R.id.tvNombreHuesped)
+        val tvFechaReserva: TextView = view.findViewById(R.id.tvFechaReserva)
+        val tvNumeroPersonas: TextView = view.findViewById(R.id.tvNumeroPersonas)
+        val btnDetallesReserva: Button = view.findViewById(R.id.btnDetallesReserva)
+        val btnEditarReserva: Button = view.findViewById(R.id.btnEditarReserva)
+        val btnCancelarReserva: Button = view.findViewById(R.id.btnCancelarReserva)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservaViewHolder {
@@ -30,11 +33,12 @@ class ReservaAdapter(
 
     override fun onBindViewHolder(holder: ReservaViewHolder, position: Int) {
         val reserva = lista[position]
-        holder.tvHuesped.text = "Huésped: ${reserva.huesped}"
-        holder.tvAgencia.text = "Agencia: ${reserva.agencia ?: "Ninguna"}"
-        holder.tvFechas.text = "Del ${reserva.fechaInicio} al ${reserva.fechaFin}"
-        holder.tvHabitaciones.text = "Habitaciones: ${reserva.habitaciones}"
+        holder.tvNombreHuesped.text = "Huésped: ${reserva.huesped}"
+        holder.tvFechaReserva.text = "Del ${reserva.fechaInicio} al ${reserva.fechaFin}"
+        holder.tvNumeroPersonas.text = "Habitaciones: ${reserva.habitaciones}"
 
-        holder.btnVerDetalle.setOnClickListener { onDetalleClick(reserva) }
+        holder.btnDetallesReserva.setOnClickListener { onDetalleClick(reserva) }
+        holder.btnEditarReserva.setOnClickListener { onEditarClick(reserva) }
+        holder.btnCancelarReserva.setOnClickListener { onCancelarClick(reserva) }
     }
 }

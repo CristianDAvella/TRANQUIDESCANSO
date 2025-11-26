@@ -2,56 +2,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="12dp"
-    android:background="@drawable/bg_btn_redondo"
-    android:layout_marginBottom="8dp"
-    android:elevation="2dp">
+    android:background="@drawable/bg_naranja_oscuro"
+    android:layout_marginBottom="8dp">
 
+    <!-- Nombre del huésped -->
     <TextView
-        android:id="@+id/tvHuesped"
-        android:layout_width="match_parent"
+        android:id="@+id/tvNombreHuesped"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Huésped: Juan Pérez"
-        android:textColor="#000000"
+        android:text="Nombre del huésped"
         android:textSize="16sp"
-        android:layout_marginBottom="4dp"/>
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 
+    <!-- Fecha de la reserva -->
     <TextView
-        android:id="@+id/tvAgencia"
-        android:layout_width="match_parent"
+        android:id="@+id/tvFechaReserva"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agencia: Ninguna"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:layout_marginBottom="4dp"/>
+        android:text="Del 01/12/2025 al 05/12/2025"
+        android:textColor="@color/white"
+        android:layout_marginTop="4dp"/>
 
+    <!-- Número de habitaciones -->
     <TextView
-        android:id="@+id/tvFechas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Del 2025-11-26 al 2025-11-28"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:layout_marginBottom="4dp"/>
-
-    <TextView
-        android:id="@+id/tvHabitaciones"
-        android:layout_width="match_parent"
+        android:id="@+id/tvNumeroPersonas"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Habitaciones: 2"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/white"
+        android:layout_marginTop="4dp"/>
 
-    <Button
-        android:id="@+id/btnVerDetalle"
+    <!-- Botones: Detalles, Editar, Cancelar -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver Detalle"
-        android:textColor="#FFFFFF"
-        android:padding="8dp"
-        android:background="@drawable/bg_naranja_oscuro"
-        app:backgroundTint="@null"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:gravity="end"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/btnDetallesReserva"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Detalles"
+            android:layout_marginEnd="8dp"
+            android:textSize="12sp"
+            android:backgroundTint="#FFA726"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_btn_redondo"/>
+
+        <Button
+            android:id="@+id/btnEditarReserva"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:layout_marginEnd="8dp"
+            android:textSize="12sp"
+            android:backgroundTint="#FFB74D"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_btn_redondo"/>
+
+        <Button
+            android:id="@+id/btnCancelarReserva"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:textSize="12sp"
+            android:backgroundTint="#FF8A65"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_btn_redondo"/>
+    </LinearLayout>
+
 </LinearLayout>

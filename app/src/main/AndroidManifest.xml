@@ -13,13 +13,13 @@
         android:theme="@style/Theme.TRANQUIDESCANSO"
         tools:targetApi="31">
         <activity
-            android:name=".CrearAgenciaActivity"
+            android:name=".CancelarReservaActivity"
             android:exported="false" />
         <activity
             android:name=".DetallesReservaActivity"
             android:exported="false" />
         <activity
-            android:name=".CancelarReservaActivity"
+            android:name=".CrearAgenciaActivity"
             android:exported="false" />
         <activity
             android:name=".EditarReservaActivity"

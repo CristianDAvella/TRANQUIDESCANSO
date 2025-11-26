@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.random.Random
 
 class HuespedDetalleActivity : AppCompatActivity() {
 
@@ -26,6 +27,7 @@ class HuespedDetalleActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spTipoDocumento.adapter = adapter
 
+        // Recupera datos enviados desde HuespedActivity
         huespedId = intent.getIntExtra("huespedId", -1)
         etNombre.setText(intent.getStringExtra("huespedNombre") ?: "")
         etDocumento.setText(intent.getStringExtra("huespedDocumento") ?: "")
@@ -39,13 +41,23 @@ class HuespedDetalleActivity : AppCompatActivity() {
         }
 
         btnGuardar.setOnClickListener {
-            val data = Intent()
-            data.putExtra("huespedId", huespedId)
-            data.putExtra("huespedNombre", etNombre.text.toString())
-            data.putExtra("huespedDocumento", etDocumento.text.toString())
-            data.putExtra("huespedTelefono", etTelefono.text.toString())
-            data.putExtra("huespedEmail", etEmail.text.toString())
-            data.putExtra("huespedTipoDocumento", spTipoDocumento.selectedItem.toString())
+            val nuevoHuesped = HuespedItem(
+                id = if (huespedId != -1) huespedId else Random.nextInt(1000),
+                nombre = etNombre.text.toString(),
+                documento = etDocumento.text.toString(),
+                telefono = etTelefono.text.toString(),
+                email = etEmail.text.toString(),                        // Agregado
+                tipoDocumento = spTipoDocumento.selectedItem.toString()
+            )
+
+            val data = Intent().apply {
+                putExtra("huespedId", nuevoHuesped.id)
+                putExtra("huespedNombre", nuevoHuesped.nombre)
+                putExtra("huespedDocumento", nuevoHuesped.documento)
+                putExtra("huespedTelefono", nuevoHuesped.telefono)
+                putExtra("huespedEmail", nuevoHuesped.email)           // Agregado
+                putExtra("huespedTipoDocumento", nuevoHuesped.tipoDocumento)
+            }
             setResult(Activity.RESULT_OK, data)
             finish()
         }

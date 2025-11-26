@@ -50,8 +50,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 "Reservas" -> {
-                    Toast.makeText(this, "Reservas pendiente", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MenuReservasActivity::class.java)
+                    startActivity(intent)
                 }
+
                 "Habitaciones" -> {
                     Toast.makeText(this, "Habitaciones pendiente", Toast.LENGTH_SHORT).show()
                 }

@@ -19,6 +19,7 @@ class CrearReservaActivity : AppCompatActivity() {
     private lateinit var btnCrearHuesped: Button
     private lateinit var tvHuespedSeleccionado: TextView
     private lateinit var spinnerAgencia: Spinner
+    private lateinit var btnCrearAgencia: Button
     private lateinit var etFechaInicio: EditText
     private lateinit var etFechaFin: EditText
     private lateinit var etCantidadPersonas: EditText
@@ -30,6 +31,9 @@ class CrearReservaActivity : AppCompatActivity() {
     private val agenciasList = mutableListOf<Agencia>()
     private val tiposHabitacionList = mutableListOf<TipoHabitacion>()
     private val cantidadPorTipo = mutableMapOf<Int, Int>()
+
+    private val REQUEST_CREAR_HUESPED = 101
+    private val REQUEST_CREAR_AGENCIA = 102
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +47,15 @@ class CrearReservaActivity : AppCompatActivity() {
         setupBuscarHuesped()
 
         btnCrearReserva.setOnClickListener { validarYGuardarReserva() }
+
         btnCrearHuesped.setOnClickListener {
             val intent = Intent(this, HuespedDetalleActivity::class.java)
-            startActivityForResult(intent, 101)
+            startActivityForResult(intent, REQUEST_CREAR_HUESPED)
+        }
+
+        btnCrearAgencia.setOnClickListener {
+            val intent = Intent(this, CrearAgenciaActivity::class.java)
+            startActivityForResult(intent, REQUEST_CREAR_AGENCIA)
         }
     }
 
@@ -54,6 +64,7 @@ class CrearReservaActivity : AppCompatActivity() {
         btnCrearHuesped = findViewById(R.id.btnCrearHuesped)
         tvHuespedSeleccionado = findViewById(R.id.tvHuespedSeleccionado)
         spinnerAgencia = findViewById(R.id.spinnerAgencia)
+        btnCrearAgencia = findViewById(R.id.btnCrearAgencia)
         etFechaInicio = findViewById(R.id.etFechaInicio)
         etFechaFin = findViewById(R.id.etFechaFin)
         etCantidadPersonas = findViewById(R.id.etCantidadPersonas)
@@ -74,21 +85,21 @@ class CrearReservaActivity : AppCompatActivity() {
     }
 
     private fun setupAgenciaSpinner() {
-        // Creamos una lista con "Ninguna" al inicio
+        actualizarSpinnerAgencias()
+    }
+
+    private fun actualizarSpinnerAgencias() {
         val nombresAgencias = mutableListOf("Ninguna")
         nombresAgencias.addAll(agenciasList.map { it.nombre })
-
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, nombresAgencias)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerAgencia.adapter = adapter
     }
 
-    // Para obtener la agencia seleccionada:
     private fun obtenerAgenciaSeleccionada(): Agencia? {
         val posicion = spinnerAgencia.selectedItemPosition
         return if (posicion == 0) null else agenciasList[posicion - 1]
     }
-
 
     private fun setupFechaPickers() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
@@ -156,7 +167,6 @@ class CrearReservaActivity : AppCompatActivity() {
             HuespedItem(1, "Juan Perez", "123456", "3001112233", "juan@mail.com", "Cédula"),
             HuespedItem(2, "Maria Lopez", "987654", "3002223344", "maria@mail.com", "Cédula")
         )
-
         return listaSimulada.find { it.documento.startsWith(identificacion) }
     }
 
@@ -195,11 +205,27 @@ class CrearReservaActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 101 && resultCode == RESULT_OK) {
+
+        // Resultado de Huesped
+        if (requestCode == REQUEST_CREAR_HUESPED && resultCode == RESULT_OK) {
             data?.let {
                 idHuespedSeleccionado = it.getIntExtra("huespedId", -1)
                 tvHuespedSeleccionado.text =
                     "${it.getStringExtra("huespedNombre")} - ${it.getStringExtra("huespedDocumento")}"
+            }
+        }
+
+        // Resultado de Agencia
+        if (requestCode == REQUEST_CREAR_AGENCIA && resultCode == RESULT_OK) {
+            data?.let {
+                val nuevaAgencia = Agencia(
+                    it.getIntExtra("agenciaId", 0),
+                    it.getStringExtra("agenciaNombre") ?: "",
+                    it.getStringExtra("agenciaTelefono") ?: ""
+                )
+                agenciasList.add(nuevaAgencia)
+                actualizarSpinnerAgencias()
+                spinnerAgencia.setSelection(agenciasList.size) // Selecciona la recién creada
             }
         }
     }

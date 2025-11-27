@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-
         val spacing = 16
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
@@ -53,9 +52,11 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, MenuReservasActivity::class.java)
                     startActivity(intent)
                 }
-
                 "Habitaciones" -> {
-                    Toast.makeText(this, "Habitaciones pendiente", Toast.LENGTH_SHORT).show()
+                    // Abrir HabitacionActivity con id de ejemplo
+                    val intent = Intent(this, HabitacionActivity::class.java)
+                    intent.putExtra("idHabitacion", "HAB001")
+                    startActivity(intent)
                 }
                 "Pagos/Servicios" -> {
                     Toast.makeText(this, "Pagos/Servicios pendiente", Toast.LENGTH_SHORT).show()
@@ -65,6 +66,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 }

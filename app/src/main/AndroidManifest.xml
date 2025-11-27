@@ -13,6 +13,12 @@
         android:theme="@style/Theme.TRANQUIDESCANSO"
         tools:targetApi="31">
         <activity
+            android:name=".CrearHabitacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HabitacionActivity"
+            android:exported="false" />
+        <activity
             android:name=".CancelarReservaActivity"
             android:exported="false" />
         <activity

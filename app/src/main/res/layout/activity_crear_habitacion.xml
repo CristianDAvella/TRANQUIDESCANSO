@@ -2,122 +2,81 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:background="@android:color/white">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/bg_naranja_oscuro"
         android:padding="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre / Número"
-            android:textColor="#FFFFFF"/>
+        <!-- Header -->
+        <include
+            layout="@layout/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <EditText
-            android:id="@+id/etNombre"
+            android:id="@+id/etNumeroHabitacion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="48dp"
+            android:padding="10dp"
             android:background="@drawable/bg_btn_redondo"
-            android:padding="12dp"/>
+            android:hint="numero habitacion"
+            android:inputType="text" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="12dp"/>
         <EditText
-            android:id="@+id/etTipo"
+            android:id="@+id/etCapacidadHabitacion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
             android:background="@drawable/bg_btn_redondo"
-            android:padding="12dp"/>
+            android:hint="capacidad"
+            android:inputType="number" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Capacidad"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="12dp"/>
+
+
         <EditText
-            android:id="@+id/etCapacidad"
+            android:id="@+id/etPrecioHabitacion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
             android:background="@drawable/bg_btn_redondo"
-            android:padding="12dp"/>
+            android:hint="precio"
+            android:inputType="numberDecimal" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Precio por noche"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="12dp"/>
-        <EditText
-            android:id="@+id/etPrecio"
+        <Spinner
+            android:id="@+id/spinnerTipo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:background="@drawable/bg_btn_redondo"
-            android:padding="12dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_btn_redondo" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Estado"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="12dp"/>
-        <EditText
-            android:id="@+id/etEstado"
+
+        <Spinner
+            android:id="@+id/spinnerEstado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_btn_redondo"
-            android:padding="12dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_btn_redondo" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Descripción"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="12dp"/>
-        <EditText
-            android:id="@+id/etDescripcion"
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardarHabitacion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_btn_redondo"
-            android:padding="12dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-            <Button
-                android:id="@+id/btnGuardar"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Guardar Habitación"
-                android:background="@drawable/bg_btn_redondo"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"/>
-
-            <Button
-                android:id="@+id/btnCancelar"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Cancelar"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/bg_btn_redondo"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"/>
-        </LinearLayout>
+            android:layout_height="55dp"
+            android:text="Guardar"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_naranja_oscuro"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            app:backgroundTint="@null" />
 
     </LinearLayout>
+
 </ScrollView>

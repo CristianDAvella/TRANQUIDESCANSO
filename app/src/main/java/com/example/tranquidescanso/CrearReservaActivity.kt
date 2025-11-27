@@ -7,7 +7,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.tranquidescanso.model.Agencia
 import com.example.tranquidescanso.model.TipoHabitacion
 import kotlin.random.Random
 import java.text.SimpleDateFormat
@@ -75,8 +74,8 @@ class CrearReservaActivity : AppCompatActivity() {
 
     private fun cargarDatosSimulados() {
         // Agencias simuladas
-        agenciasList.add(Agencia(1, "Agencia Alpha", "3001112233"))
-        agenciasList.add(Agencia(2, "Agencia Beta", "3002223344"))
+        agenciasList.add(Agencia(1, "Agencia Alpha", "3001112233", "Dirección Alpha"))
+        agenciasList.add(Agencia(2, "Agencia Beta", "3002223344", "Dirección Beta"))
 
         // Tipos de habitación simulados
         tiposHabitacionList.add(TipoHabitacion(1, "Sencilla"))
@@ -221,7 +220,8 @@ class CrearReservaActivity : AppCompatActivity() {
                 val nuevaAgencia = Agencia(
                     it.getIntExtra("agenciaId", 0),
                     it.getStringExtra("agenciaNombre") ?: "",
-                    it.getStringExtra("agenciaTelefono") ?: ""
+                    it.getStringExtra("agenciaTelefono") ?: "",
+                    it.getStringExtra("agenciaDireccion") ?: ""
                 )
                 agenciasList.add(nuevaAgencia)
                 actualizarSpinnerAgencias()

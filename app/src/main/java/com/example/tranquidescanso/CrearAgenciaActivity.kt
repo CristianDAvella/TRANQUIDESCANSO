@@ -1,12 +1,15 @@
 package com.example.tranquidescanso
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.random.Random
 
 data class Agencia(
+    val id: Int,
     val nombre: String,
     val telefono: String,
     val direccion: String
@@ -18,11 +21,6 @@ class CrearAgenciaActivity : AppCompatActivity() {
     private lateinit var etTelefono: EditText
     private lateinit var etDireccion: EditText
     private lateinit var btnGuardar: Button
-
-    // Lista temporal de agencias (puedes reemplazar con base de datos)
-    companion object {
-        val listaAgencias = mutableListOf<Agencia>()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +38,18 @@ class CrearAgenciaActivity : AppCompatActivity() {
 
             if(nombre.isEmpty() || telefono.isEmpty() || direccion.isEmpty()){
                 Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
-            } else {
-                val nuevaAgencia = Agencia(nombre, telefono, direccion)
-                listaAgencias.add(nuevaAgencia)
-                Toast.makeText(this, "Agencia creada correctamente", Toast.LENGTH_SHORT).show()
-                finish() // cerrar Activity
+                return@setOnClickListener
             }
+
+            val idGenerado = Random.nextInt(1000)
+
+            val intent = Intent()
+            intent.putExtra("agenciaId", idGenerado)
+            intent.putExtra("agenciaNombre", nombre)
+            intent.putExtra("agenciaTelefono", telefono)
+            intent.putExtra("agenciaDireccion", direccion)
+            setResult(RESULT_OK, intent)
+            finish()
         }
     }
 }

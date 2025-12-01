@@ -13,6 +13,7 @@ import com.example.tranquidescanso.ui.huespedes.HuespedActivity
 import com.example.tranquidescanso.ui.habitaciones.HabitacionActivity
 import com.example.tranquidescanso.ui.agencias.AgenciaActivity
 import com.example.tranquidescanso.ui.reservas.ReservasActivity
+import com.example.tranquidescanso.ui.servicios.ServiciosActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -62,8 +63,9 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, AgenciaActivity::class.java)
                 startActivity(intent)
             }
-                "SERVICIOS" -> {
-                    // Aquí abrirías ServiciosActivity
+                "SERVICIOS" -> { // <--- Aquí redirigimos a Habitaciones
+                    val intent = Intent(this, ServiciosActivity::class.java)
+                    startActivity(intent)
                 }
                 "ESTADÍSTICA" -> {
                     // Aquí abrirías EstadisticaActivity

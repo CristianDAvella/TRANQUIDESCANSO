@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="DatePickerNaranja" parent="Theme.AppCompat.Light.Dialog">
+    <style name="DatePickerNaranja" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="colorAccent">@color/naranjaoscuro</item>
-        <item name="android:colorAccent">@color/naranjaoscuro</item>
-        <item name="android:headerBackground">@color/naranjaoscuro</item>
-        <item name="android:datePickerDialogTheme">@style/DatePickerNaranja</item>
+    </style>
+
+    <style name="TimePickerNaranja" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorAccent">@color/naranjaoscuro</item>
     </style>
 
 </resources>

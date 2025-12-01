@@ -1,50 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_habitacion_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp"
-    android:background="@drawable/bg_naranja_oscuro"
-    android:layout_marginBottom="8dp">
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    android:padding="12dp"
+    android:background="@drawable/bg_naranja_oscuro">
 
     <TextView
         android:id="@+id/tvNumero"
-        android:text="Número"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Número: "
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="20sp"
+        android:layout_marginBottom="4dp"/>
 
     <TextView
         android:id="@+id/tvTipo"
-        android:text="Tipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"/>
+        android:text="Tipo: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"/>
 
     <TextView
         android:id="@+id/tvCapacidad"
-        android:text="Capacidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"/>
+        android:text="Capacidad: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"/>
 
     <TextView
-        android:id="@+id/tvDescripcion"
-        android:text="Descripción"
+        android:id="@+id/tvEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"/>
-
+        android:text="Estado: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
+    <TextView
+        android:id="@+id/tvDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
     <Button
         android:id="@+id/btnEditarHabitacion"
-        android:text="Editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_naranja_oscuro"
-        android:textColor="@color/white"/>
+        android:text="Editar"
+        android:background="@drawable/bg_naranja_claro"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"/>
 </LinearLayout>

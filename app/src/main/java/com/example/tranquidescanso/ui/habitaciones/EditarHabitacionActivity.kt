@@ -14,7 +14,8 @@ import com.example.tranquidescanso.model.Habitacion
 class EditarHabitacionActivity : AppCompatActivity() {
 
     private val tiposHabitacion = listOf("Sencilla", "Doble", "Suite", "Familiar")
-    private val hoteles = listOf("Hotel Paraíso", "Hotel Central", "Hotel Playa") // Simulación de tu lista real
+    private val hoteles = listOf("Hotel Paraíso", "Hotel Central", "Hotel Playa")
+    private val estados = listOf("Disponible", "Ocupada")
 
     private lateinit var habitacion: Habitacion
     private var position: Int = -1
@@ -34,26 +35,29 @@ class EditarHabitacionActivity : AppCompatActivity() {
         val spinnerTipo = findViewById<Spinner>(R.id.spinnerTipo)
         val etCapacidad = findViewById<EditText>(R.id.etCapacidad)
         val spinnerHotel = findViewById<Spinner>(R.id.spinnerHotel)
+        val spinnerEstado = findViewById<Spinner>(R.id.spinnerEstado)
         val etDescripcion = findViewById<EditText>(R.id.etDescripcion)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarHabitacion)
 
-        val tipoAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposHabitacion)
-        tipoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerTipo.adapter = tipoAdapter
-
-        val hotelAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, hoteles)
-        hotelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerHotel.adapter = hotelAdapter
+        spinnerTipo.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposHabitacion).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+        spinnerHotel.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, hoteles).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+        spinnerEstado.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, estados).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
 
         habitacion = intent.getSerializableExtra("habitacion") as Habitacion
         position = intent.getIntExtra("position", -1)
 
-        // Cargar datos existentes
         etNumero.setText(habitacion.numero)
         etCapacidad.setText(habitacion.capacidad.toString())
         etDescripcion.setText(habitacion.descripcion)
         spinnerTipo.setSelection(tiposHabitacion.indexOf(habitacion.tipo))
         spinnerHotel.setSelection(habitacion.hotelId - 1)
+        spinnerEstado.setSelection(estados.indexOf(habitacion.estado))
 
         btnGuardar.setOnClickListener {
             val numero = etNumero.text.toString().trim()
@@ -61,6 +65,7 @@ class EditarHabitacionActivity : AppCompatActivity() {
             val capacidad = etCapacidad.text.toString().trim().toIntOrNull() ?: 0
             val hotelNombre = spinnerHotel.selectedItem.toString()
             val hotelId = spinnerHotel.selectedItemPosition + 1
+            val estado = spinnerEstado.selectedItem.toString()
             val descripcion = etDescripcion.text.toString().trim()
 
             if(numero.isEmpty() || capacidad == 0 || descripcion.isEmpty()){
@@ -73,6 +78,7 @@ class EditarHabitacionActivity : AppCompatActivity() {
             habitacion.capacidad = capacidad
             habitacion.hotelId = hotelId
             habitacion.hotelNombre = hotelNombre
+            habitacion.estado = estado
             habitacion.descripcion = descripcion
 
             val intent = Intent()
@@ -83,4 +89,5 @@ class EditarHabitacionActivity : AppCompatActivity() {
         }
     }
 }
+
 

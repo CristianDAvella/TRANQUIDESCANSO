@@ -8,7 +8,9 @@ data class Habitacion(
     var tipo: String,
     var capacidad: Int,
     var hotelId: Int,
-    var ocupada: Boolean = false,
-    var descripcion: String,
-    var hotelNombre: String = ""
+    var hotelNombre: String,
+    var estado: String = "Disponible",  // Controla si está ocupada o libre
+    var descripcion: String
 ) : Serializable
+
+

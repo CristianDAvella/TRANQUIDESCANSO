@@ -25,13 +25,14 @@ class ReservasActivity : AppCompatActivity() {
         val btnCrearReserva = findViewById<LinearLayout>(R.id.btnCrearReserva)
         val btnVerReservas = findViewById<LinearLayout>(R.id.btnVerReservas)
 
-       // btnCrearReserva.setOnClickListener {
-         //   val intent = Intent(this, AgregarReservaActivity::class.java)
-           // startActivity(intent)
+        btnCrearReserva.setOnClickListener {
+            val intent = Intent(this, AgregarReservaActivity::class.java)
+            startActivity(intent)
         }
 
-        //btnVerReservas.setOnClickListener {
-           // val intent = Intent(this, VerReservasActivity::class.java)
-         //   startActivity(intent)
+        btnVerReservas.setOnClickListener {
+            val intent = Intent(this, VerReservasActivity::class.java)
+            startActivity(intent)
         }
-
+    }
+}

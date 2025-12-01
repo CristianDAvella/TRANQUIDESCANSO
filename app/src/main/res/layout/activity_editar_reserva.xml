@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/header"/>
+
+        <!-- ===================== -->
+        <!--     ID de Reserva     -->
+        <!-- ===================== -->
+        <TextView
+            android:id="@+id/tvIdReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Reserva:"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"/>
+
+        <!-- ===================== -->
+        <!--     DATOS HUESPED     -->
+        <!-- ===================== -->
+        <TextView
+            android:text="Datos del huésped"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etHuespedEditar"
+            android:hint="Nombre del huésped"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etTipoDocEditar"
+            android:hint="Tipo de documento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etNumDocEditar"
+            android:hint="Número de documento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etTelefonosEditar"
+            android:hint="Teléfonos (separados por coma)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etCorreoEditar"
+            android:hint="Correo electrónico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <!-- ===================== -->
+        <!--      HOTEL / HAB      -->
+        <!-- ===================== -->
+        <TextView
+            android:text="Datos del hotel y habitación"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etHotelEditar"
+            android:hint="Hotel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etHabitacionEditar"
+            android:hint="Número habitación"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etTipoHabitacionEditar"
+            android:hint="Tipo habitación (Doble, Suite, etc)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etCapacidadHabitacionEditar"
+            android:hint="Capacidad"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etDescripcionHabitacionEditar"
+            android:hint="Descripción de la habitación"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etEstadoHabitacionEditar"
+            android:hint="Estado (Disponible / Ocupada)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <!-- ===================== -->
+        <!--         FECHAS        -->
+        <!-- ===================== -->
+        <TextView
+            android:text="Fechas y detalles"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etFechaReservaEditar"
+            android:hint="Fecha de reserva"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etFechaInicioEditar"
+            android:hint="Fecha inicio"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etFechaFinEditar"
+            android:hint="Fecha fin"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etVencimientoEditar"
+            android:hint="Vencimiento (hora)"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etCantidadPersonasEditar"
+            android:hint="Cantidad de personas"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_naranja_claro"
+            android:layout_marginTop="8dp"/>
+
+        <CheckBox
+            android:id="@+id/cbAnticipoEditar"
+            android:text="Anticipo pagado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
+        <!-- ESTADO DE RESERVA -->
+        <Spinner
+            android:id="@+id/spEstadoEditar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_naranja_claro"/>
+
+        <!-- BOTÓN GUARDAR -->
+        <Button
+            android:id="@+id/btnGuardarCambios"
+            android:text="Guardar cambios"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/naranjaoscuro"
+            android:textColor="@android:color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+    </LinearLayout>
+</ScrollView>
+

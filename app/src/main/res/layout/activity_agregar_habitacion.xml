@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -15,6 +13,7 @@
 
         <include layout="@layout/header"/>
 
+        <!-- Número de habitación -->
         <EditText
             android:id="@+id/etNumero"
             android:layout_width="match_parent"
@@ -25,6 +24,7 @@
             android:padding="12dp"
             android:layout_marginBottom="8dp"/>
 
+        <!-- Tipo de habitación -->
         <Spinner
             android:id="@+id/spinnerTipo"
             android:layout_width="match_parent"
@@ -32,6 +32,15 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_naranja_claro"/>
 
+        <!-- Estado de habitación -->
+        <Spinner
+            android:id="@+id/spinnerEstado"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_naranja_claro"/>
+
+        <!-- Capacidad -->
         <EditText
             android:id="@+id/etCapacidad"
             android:layout_width="match_parent"
@@ -42,13 +51,15 @@
             android:padding="12dp"
             android:layout_marginBottom="8dp"/>
 
+        <!-- Hotel -->
         <Spinner
             android:id="@+id/spinnerHotel"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_naranja_claro"/>
 
+        <!-- Botón Guardar -->
         <Button
             android:id="@+id/btnGuardarHabitacion"
             android:layout_width="match_parent"

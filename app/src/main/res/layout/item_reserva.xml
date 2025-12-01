@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="15dp"
+    android:background="@drawable/bg_naranja_oscuro"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvHuesped"
+        android:text="Huésped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvHotel"
+        android:text="Hotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/tvHabitacion"
+        android:text="Habitación"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/tvEstado"
+        android:text="Estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnEditarReserva"
+        android:text="Editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_naranja_claro"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"/>
+</LinearLayout>

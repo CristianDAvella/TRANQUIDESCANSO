@@ -4,8 +4,7 @@
     android:id="@+id/main_habitacion"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <!-- Header -->
     <include layout="@layout/header"/>
@@ -15,8 +14,6 @@
         android:id="@+id/btnAgregarHabitacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:text="Agregar Habitación"
         android:background="@drawable/bg_naranja_oscuro"
         android:textColor="@color/white"
@@ -28,6 +25,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHabitaciones"
         android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="16dp"/>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_agregar_reserva"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/header"/>
+
+        <!-- Filtro por número documento -->
+        <EditText
+            android:id="@+id/etFiltroDocumento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Número de documento del huésped"
+            android:background="@drawable/bg_naranja_claro"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Resultado de búsqueda -->
+        <TextView
+            android:id="@+id/tvHuespedResultado"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_naranja_claro"
+            android:padding="8dp"
+            android:text=""
+            android:textColor="@color/white" />
+
+        <!-- Spinner agencias -->
+        <Spinner
+            android:id="@+id/spinnerAgencia"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_naranja_claro" />
+
+        <!-- Fecha reserva -->
+        <EditText
+            android:id="@+id/etFechaReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha reserva"
+            android:focusable="false"
+            android:background="@drawable/bg_naranja_claro"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Fecha inicio -->
+        <EditText
+            android:id="@+id/etFechaInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha inicio"
+            android:focusable="false"
+            android:background="@drawable/bg_naranja_claro"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Fecha fin -->
+        <EditText
+            android:id="@+id/etFechaFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha fin"
+            android:focusable="false"
+            android:background="@drawable/bg_naranja_claro"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Vencimiento reserva (hora) -->
+        <EditText
+            android:id="@+id/etVencimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vencimiento (hora)"
+            android:focusable="false"
+            android:background="@drawable/bg_naranja_claro"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Cantidad de personas -->
+        <EditText
+            android:id="@+id/etCantidadPersonas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cantidad de personas"
+            android:inputType="number"
+            android:background="@drawable/bg_naranja_claro"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Anticipo pagado -->
+        <CheckBox
+            android:id="@+id/cbAnticipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anticipo pagado"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Estado reserva -->
+        <Spinner
+            android:id="@+id/spinnerEstado"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_naranja_claro" />
+
+        <!-- Hotel -->
+        <Spinner
+            android:id="@+id/spinnerHotel"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_naranja_claro" />
+
+        <!-- Habitacion -->
+        <Spinner
+            android:id="@+id/spinnerHabitacion"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_naranja_claro" />
+
+        <!-- Botón Crear Reserva -->
+        <Button
+            android:id="@+id/btnCrearReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear Reserva"
+            android:background="@drawable/bg_naranja_oscuro"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"/>
+
+
+
+    </LinearLayout>
+</ScrollView>

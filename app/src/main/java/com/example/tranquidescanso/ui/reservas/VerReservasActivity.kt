@@ -59,16 +59,21 @@ class VerReservasActivity : AppCompatActivity() {
                         correo = "juan@gmail.com"
                     ),
                     hotel = "Hotel Paraíso",
-                    habitacion = Habitacion(
-                        id = 1,
-                        numero = "101",
-                        tipo = "Doble",
-                        capacidad = 2,
-                        hotelId = 1,
-                        hotelNombre = "Hotel Paraíso",
-                        estado = "Disponible",
-                        descripcion = "Habitación doble"
+
+                    // 👉 ahora se usa lista de habitaciones
+                    habitaciones = mutableListOf(
+                        Habitacion(
+                            id = 1,
+                            numero = "101",
+                            tipo = "Doble",
+                            capacidad = 2,
+                            hotelId = 1,
+                            hotelNombre = "Hotel Paraíso",
+                            estado = "Disponible",
+                            descripcion = "Habitación doble"
+                        )
                     ),
+
                     agencia = "Agencia A",
                     fechaReserva = "01/12/2025",
                     fechaInicio = "05/12/2025",
@@ -78,6 +83,7 @@ class VerReservasActivity : AppCompatActivity() {
                     anticipoPagado = true,
                     estado = "Confirmada"
                 ),
+
                 Reserva(
                     id = 2,
                     huesped = Huesped(
@@ -89,16 +95,21 @@ class VerReservasActivity : AppCompatActivity() {
                         correo = "maria@gmail.com"
                     ),
                     hotel = "Hotel Central",
-                    habitacion = Habitacion(
-                        id = 3,
-                        numero = "201",
-                        tipo = "Suite",
-                        capacidad = 4,
-                        hotelId = 2,
-                        hotelNombre = "Hotel Central",
-                        estado = "Disponible",
-                        descripcion = "Suite ejecutiva"
+
+                    // 👉 también se usa lista de habitaciones
+                    habitaciones = mutableListOf(
+                        Habitacion(
+                            id = 3,
+                            numero = "201",
+                            tipo = "Suite",
+                            capacidad = 4,
+                            hotelId = 2,
+                            hotelNombre = "Hotel Central",
+                            estado = "Disponible",
+                            descripcion = "Suite ejecutiva"
+                        )
                     ),
+
                     agencia = null,
                     fechaReserva = "30/11/2025",
                     fechaInicio = "10/12/2025",
@@ -111,4 +122,5 @@ class VerReservasActivity : AppCompatActivity() {
             )
         )
     }
+
 }

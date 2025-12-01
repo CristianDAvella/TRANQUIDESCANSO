@@ -1,6 +1,5 @@
 package com.example.tranquidescanso.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tranquidescanso.R
 import com.example.tranquidescanso.model.Reserva
 
-// LISTA GLOBAL (no crea archivo nuevo; sitúalo aquí)
+// LISTA GLOBAL
 val listaGlobalReservas: MutableList<Reserva> = mutableListOf()
 
 class ReservaAdapter(
@@ -34,9 +33,18 @@ class ReservaAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val reserva = reservas[position]
-        holder.tvHuesped.text = "Huésped: ${reserva.huesped.nombre} (${reserva.huesped.numeroDocumento})"
+
+        val numeros = reserva.habitaciones.joinToString { it.numero }
+        val tipos = reserva.habitaciones.joinToString { it.tipo }
+
+        holder.tvHuesped.text =
+            "Huésped: ${reserva.huesped.nombre} (${reserva.huesped.numeroDocumento})"
+
         holder.tvHotel.text = "Hotel: ${reserva.hotel}"
-        holder.tvHabitacion.text = "Habitación: ${reserva.habitacion.numero} (${reserva.habitacion.tipo})"
+
+        holder.tvHabitacion.text =
+            "Habitaciones: $numeros ($tipos)"
+
         holder.tvEstado.text = "Estado: ${reserva.estado}"
 
         holder.btnEditar.setOnClickListener {

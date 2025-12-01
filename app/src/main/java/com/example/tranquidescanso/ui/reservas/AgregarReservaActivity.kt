@@ -1,5 +1,6 @@
 package com.example.tranquidescanso.ui.reservas
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -23,6 +24,8 @@ class AgregarReservaActivity : AppCompatActivity() {
     private val huespedes = mutableListOf<Huesped>()
     private val habitaciones = mutableListOf<Habitacion>()
 
+    private val habitacionesSeleccionadas = mutableListOf<Habitacion>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,96 +37,14 @@ class AgregarReservaActivity : AppCompatActivity() {
             insets
         }
 
-        // --- HUESPEDES ---
-        huespedes.add(
-            Huesped(
-                id = 1,
-                nombre = "Carlos Perez",
-                tipoDocumento = "CC",
-                numeroDocumento = "123",
-                telefonos = mutableListOf("300000000"),
-                correo = "carlos@gmail.com"
-            )
-        )
+        // Datos demo
+        huespedes.add(Huesped(1, "Carlos Perez", "CC", "123", mutableListOf("300000000"), "carlos@gmail.com"))
+        huespedes.add(Huesped(2, "María Lopez", "CC", "456", mutableListOf("310000000"), "maria@gmail.com"))
 
-        huespedes.add(
-            Huesped(
-                id = 2,
-                nombre = "Maria Lopez",
-                tipoDocumento = "CC",
-                numeroDocumento = "456",
-                telefonos = mutableListOf("310000000"),
-                correo = "maria@gmail.com"
-            )
-        )
-
-        huespedes.add(
-            Huesped(
-                id = 3,
-                nombre = "Juan Silva",
-                tipoDocumento = "CC",
-                numeroDocumento = "789",
-                telefonos = mutableListOf("320000000"),
-                correo = "juan@gmail.com"
-            )
-        )
-
-
-        // --- HABITACIONES ---
-        habitaciones.add(
-            Habitacion(
-                id = 1,
-                numero = "101",
-                tipo = "Sencilla",
-                capacidad = 2,
-                hotelId = 1,
-                hotelNombre = "Hotel Paraíso",
-                estado = "Disponible",
-                descripcion = "Habitación sencilla"
-            )
-        )
-
-        habitaciones.add(
-            Habitacion(
-                id = 2,
-                numero = "102",
-                tipo = "Doble",
-                capacidad = 3,
-                hotelId = 1,
-                hotelNombre = "Hotel Paraíso",
-                estado = "Ocupada",
-                descripcion = "Habitación doble"
-            )
-        )
-
-        habitaciones.add(
-            Habitacion(
-                id = 3,
-                numero = "201",
-                tipo = "Suite",
-                capacidad = 4,
-                hotelId = 2,
-                hotelNombre = "Hotel Central",
-                estado = "Disponible",
-                descripcion = "Suite amplia"
-            )
-        )
-
-        habitaciones.add(
-            Habitacion(
-                id = 4,
-                numero = "301",
-                tipo = "Familiar",
-                capacidad = 5,
-                hotelId = 3,
-                hotelNombre = "Hotel Playa",
-                estado = "Disponible",
-                descripcion = "Habitación familiar"
-            )
-        )
-
-
-
+        habitaciones.add(Habitacion(1, "101", "Sencilla", 2, 1, "Hotel Paraíso", "Disponible", "Vista"))
+        habitaciones.add(Habitacion(2, "102", "Doble", 3, 1, "Hotel Paraíso", "Disponible", "Balcón"))
+        habitaciones.add(Habitacion(3, "201", "Suite", 4, 2, "Hotel Central", "Disponible", "Suite"))
+        habitaciones.add(Habitacion(4, "301", "Familiar", 5, 3, "Hotel Playa", "Disponible", "Familiar"))
 
         val etDocumento = findViewById<EditText>(R.id.etFiltroDocumento)
         val tvHuespedResultado = findViewById<TextView>(R.id.tvHuespedResultado)
@@ -136,60 +57,39 @@ class AgregarReservaActivity : AppCompatActivity() {
         val cbAnticipo = findViewById<CheckBox>(R.id.cbAnticipo)
         val spinnerEstado = findViewById<Spinner>(R.id.spinnerEstado)
         val spinnerHotel = findViewById<Spinner>(R.id.spinnerHotel)
-        val spinnerHabitacion = findViewById<Spinner>(R.id.spinnerHabitacion)
+
+        val btnAgregarHabitacion = findViewById<Button>(R.id.btnAgregarHabitacionMultiple)
+        val llSelectedHabitaciones = findViewById<LinearLayout>(R.id.llSelectedHabitaciones)
+
         val btnCrearReserva = findViewById<Button>(R.id.btnCrearReserva)
 
+        spinnerAgencia.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listOf("Ninguna") + agencias)
+        spinnerEstado.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, estados)
+        spinnerHotel.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, hoteles)
 
-
-        val agenciasOpciones = listOf("Ninguna") + agencias
-        spinnerAgencia.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, agenciasOpciones).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
-
-        spinnerEstado.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, estados).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
-
-        spinnerHotel.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, hoteles).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
-
-
-        cbAnticipo.buttonTintList = android.content.res.ColorStateList.valueOf(
-            resources.getColor(R.color.naranjaoscuro)
-        )
-
-
-
+        // Filtro huésped
         etDocumento.addTextChangedListener(object : android.text.TextWatcher {
+            override fun afterTextChanged(s: android.text.Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val doc = s.toString().trim()
-                val huesped = huespedes.find { it.numeroDocumento == doc }
-
-                tvHuespedResultado.text = if (huesped != null) {
-                    "Huésped encontrado: ${huesped.nombre}"
-                } else {
-                    "No hay ningún huésped con ese documento"
-                }
+                val huesped = huespedes.find { it.numeroDocumento == s.toString().trim() }
+                tvHuespedResultado.text =
+                    huesped?.let { "Huésped: ${it.nombre}" } ?: "No encontrado"
             }
-            override fun afterTextChanged(s: android.text.Editable?) {}
         })
 
-
-
+        // Calendarios
         fun showDatePicker(editText: EditText) {
             val cal = Calendar.getInstance()
-            val dpd = DatePickerDialog(
-                this,
-                R.style.DatePickerNaranja,
-                { _, y, m, d ->
-                    editText.setText("%02d/%02d/%04d".format(d, m + 1, y))
-                },
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-            )
+            val dpd = DatePickerDialog(this, R.style.DatePickerNaranja, { _, y, m, d ->
+                editText.setText("%02d/%02d/%04d".format(d, m + 1, y))
+            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
+
+            dpd.setOnShowListener {
+                dpd.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(android.R.color.black))
+                dpd.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(android.R.color.black))
+            }
+
             dpd.show()
         }
 
@@ -197,102 +97,78 @@ class AgregarReservaActivity : AppCompatActivity() {
         etFechaInicio.setOnClickListener { showDatePicker(etFechaInicio) }
         etFechaFin.setOnClickListener { showDatePicker(etFechaFin) }
 
-
-
-        etVencimiento.setText("19:00")
         etVencimiento.setOnClickListener {
-            val tpd = TimePickerDialog(
-                this,
-                R.style.TimePickerNaranja,
-                { _, hour, minute ->
-                    etVencimiento.setText("%02d:%02d".format(hour, minute))
-                },
-                19,
-                0,
-                true
-            )
+            val tpd = TimePickerDialog(this, R.style.TimePickerNaranja, { _, h, m ->
+                etVencimiento.setText("%02d:%02d".format(h, m))
+            }, 19, 0, true)
+
+            tpd.setOnShowListener {
+                tpd.getButton(TimePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(android.R.color.black))
+                tpd.getButton(TimePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(android.R.color.black))
+            }
+
             tpd.show()
         }
 
+        // Agregar habitación
+        btnAgregarHabitacion.setOnClickListener {
+            val hotelSel = spinnerHotel.selectedItem.toString()
+            val disponibles = habitaciones.filter { it.hotelNombre == hotelSel && it.estado == "Disponible" }
 
-        spinnerHotel.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: android.view.View?,
-                position: Int,
-                id: Long
-            ) {
-                val hotelSeleccionado = hoteles[position]
-                val disponibles = habitaciones.filter {
-                    it.hotelNombre == hotelSeleccionado && it.estado == "Disponible"
-                }
-
-                val spinnerData = if (disponibles.isNotEmpty())
-                    disponibles.map { it.numero }
-                else
-                    listOf("No hay habitaciones disponibles")
-
-                spinnerHabitacion.adapter = ArrayAdapter(
-                    this@AgregarReservaActivity,
-                    android.R.layout.simple_spinner_item,
-                    spinnerData
-                ).apply {
-                    setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                }
+            if (disponibles.isEmpty()) {
+                Toast.makeText(this, "No hay habitaciones disponibles", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        })
+            val items = disponibles.map { "${it.numero} - ${it.tipo} (${it.capacidad})" }.toTypedArray()
 
+            AlertDialog.Builder(this)
+                .setTitle("Seleccionar habitación")
+                .setItems(items) { _, pos ->
+                    val hab = disponibles[pos]
+                    if (!habitacionesSeleccionadas.any { it.id == hab.id }) {
+                        habitacionesSeleccionadas.add(hab)
 
+                        val tv = TextView(this)
+                        tv.text = "${hab.numero} - ${hab.tipo} (${hab.capacidad})"
+                        tv.setPadding(10, 8, 10, 8)
+                        llSelectedHabitaciones.addView(tv)
+                    }
+                }
+                .show()
+        }
+
+        // Crear reserva
         btnCrearReserva.setOnClickListener {
             val doc = etDocumento.text.toString().trim()
             val huesped = huespedes.find { it.numeroDocumento == doc }
-
             if (huesped == null) {
                 Toast.makeText(this, "Huésped no encontrado", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val fechaReserva = etFechaReserva.text.toString().trim()
-            val fechaInicio = etFechaInicio.text.toString().trim()
-            val fechaFin = etFechaFin.text.toString().trim()
-            val vencimientoHora = etVencimiento.text.toString().trim()
-            val cantidadPersonas = etCantidadPersonas.text.toString().trim().toIntOrNull() ?: 0
-            val anticipo = cbAnticipo.isChecked
-            val estado = spinnerEstado.selectedItem.toString()
-            val hotel = spinnerHotel.selectedItem.toString()
-            val habitacionNum = spinnerHabitacion.selectedItem.toString()
-            val agencia = if (spinnerAgencia.selectedItem == "Ninguna") null else spinnerAgencia.selectedItem.toString()
-
-            val habitacion = habitaciones.find {
-                it.numero == habitacionNum && it.hotelNombre == hotel
-            }
-
-            if (fechaReserva.isEmpty() || fechaInicio.isEmpty() || fechaFin.isEmpty() ||
-                vencimientoHora.isEmpty() || cantidadPersonas == 0 || habitacion == null
-            ) {
-                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+            if (habitacionesSeleccionadas.isEmpty()) {
+                Toast.makeText(this, "Agrega al menos 1 habitación", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val reserva = Reserva(
+            val nueva = Reserva(
+                id = Random().nextInt(999999),
                 huesped = huesped,
-                hotel = hotel,
-                habitacion = habitacion,
-                agencia = agencia,
-                fechaReserva = fechaReserva,
-                fechaInicio = fechaInicio,
-                fechaFin = fechaFin,
-                vencimiento = vencimientoHora,
-                cantidadPersonas = cantidadPersonas,
-                anticipoPagado = anticipo,
-                estado = estado
+                hotel = spinnerHotel.selectedItem.toString(),
+                habitaciones = habitacionesSeleccionadas.toMutableList(),
+                agencia = spinnerAgencia.selectedItem.toString().takeIf { it != "Ninguna" },
+                fechaReserva = etFechaReserva.text.toString(),
+                fechaInicio = etFechaInicio.text.toString(),
+                fechaFin = etFechaFin.text.toString(),
+                vencimiento = etVencimiento.text.toString(),
+                cantidadPersonas = etCantidadPersonas.text.toString().toIntOrNull() ?: 0,
+                anticipoPagado = cbAnticipo.isChecked,
+                estado = spinnerEstado.selectedItem.toString()
             )
 
-            Toast.makeText(this, "Reserva creada para ${huesped.nombre}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Reserva creada!", Toast.LENGTH_SHORT).show()
             finish()
         }
     }
 }
-

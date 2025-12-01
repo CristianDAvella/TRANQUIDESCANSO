@@ -43,7 +43,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_naranja_oscuro"
         android:padding="16dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
 
         <ImageView
             android:layout_width="64dp"
@@ -60,4 +61,30 @@
             android:layout_marginTop="8dp"/>
     </LinearLayout>
 
+    <!-- ⭐ NUEVO BOTÓN CHECK-IN ⭐ -->
+    <LinearLayout
+        android:id="@+id/btnCheckIn"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_naranja_oscuro"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/chec" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check-In"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
 </LinearLayout>
+

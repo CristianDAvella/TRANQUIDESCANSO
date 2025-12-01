@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/main_checkin"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.reservas.CheckInActivity">
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Header estándar -->
+    <include layout="@layout/header"/>
+
+    <!-- Spinner: seleccionar reserva -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Reserva"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        />
+
+    <Spinner
+        android:id="@+id/spinnerReservas"
+        android:layout_width="378dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_naranja_claro" />
+
+    <!-- Fechas Check-in y Check-out lado a lado -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:weightSum="2">
+
+        <EditText
+            android:id="@+id/etFechaCheckIn"
+            android:hint="Fecha Check-in"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:padding="10dp"
+            android:background="@drawable/bg_naranja_claro"/>
+
+        <EditText
+            android:id="@+id/etFechaCheckOut"
+            android:hint="Fecha Check-out"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:padding="10dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_naranja_claro"/>
+    </LinearLayout>
+
+    <!-- RecyclerView: habitaciones y huéspedes -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHabitaciones"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"/>
+
+
+    <!-- Botón Guardar Check-in -->
+    <Button
+        android:id="@+id/btnGuardarCheckIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Check-in"
+        android:background="@color/naranjaoscuro"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        android:padding="12dp"
+        app:backgroundTint="@null"/>
+</LinearLayout>

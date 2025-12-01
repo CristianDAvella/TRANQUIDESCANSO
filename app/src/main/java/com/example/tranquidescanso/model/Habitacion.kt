@@ -4,13 +4,12 @@ import java.io.Serializable
 
 data class Habitacion(
     var id: Int = 0,
-    var numero: String,
-    var tipo: String,
-    var capacidad: Int,
-    var hotelId: Int,
-    var hotelNombre: String,
-    var estado: String = "Disponible",  // Controla si está ocupada o libre
-    var descripcion: String
+    var numero: String = "",
+    var tipo: String = "",
+    var capacidad: Int = 1,
+    var hotelId: Int = 0,
+    var hotelNombre: String = "",
+    var estado: String = "Disponible",
+    var descripcion: String = "",
+    var huespedesCheckIn: MutableList<HuespedCheckIn> = mutableListOf() // <-- agregar esto
 ) : Serializable
-
-

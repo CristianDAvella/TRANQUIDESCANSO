@@ -12,17 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TRANQUIDESCANSO"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.hotel.HistorialHotelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.hotel.EditarHotelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.hotel.AgregarHotelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.hotel.HotelActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

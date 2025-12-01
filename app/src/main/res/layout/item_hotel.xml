@@ -1,0 +1,80 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:padding="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardBackgroundColor="@color/naranjaoscuro">
+
+    <!-- Contenedor interno con margen a la izquierda igual que los TextView -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <!-- Nombre del hotel -->
+        <TextView
+            android:id="@+id/tvNombreHotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="6dp"
+            android:fontFamily="@font/playfairdisplayvariablefontwght"
+            android:text="Nombre del Hotel"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Dirección -->
+        <TextView
+            android:id="@+id/tvDireccionHotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/playfairdisplayvariablefontwght"
+            android:text="Dirección"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- Categoría -->
+        <TextView
+            android:id="@+id/tvCategoriaHotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/playfairdisplayvariablefontwght"
+            android:text="Categoría: 3 estrellas"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btnEditar"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_naranja_claro"
+                android:text="Editar"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnHistorial"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_naranja_claro"
+                android:text="Historial"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+

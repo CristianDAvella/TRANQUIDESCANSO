@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_editar_hotel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <include layout="@layout/header"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etNombreHotel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del hotel"
+                android:background="@drawable/bg_naranja_claro"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/etDireccionHotel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Dirección"
+                android:background="@drawable/bg_naranja_claro"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Teléfonos dinámicos -->
+            <LinearLayout
+                android:id="@+id/llTelefonosContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+            <Button
+                android:id="@+id/btnAgregarTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar teléfono"
+                android:background="@drawable/bg_naranja_oscuro"
+                android:textColor="@color/white"
+                android:layout_marginBottom="12dp"
+                app:backgroundTint="@null"/>
+
+            <EditText
+                android:id="@+id/etFechaInauguracion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de inauguración"
+                android:focusable="false"
+                android:clickable="true"
+                android:background="@drawable/bg_naranja_claro"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/btnGuardarHotel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar cambios"
+                android:background="@drawable/bg_naranja_oscuro"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"
+                app:backgroundTint="@null"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.tranquidescanso.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tranquidescanso.R
 import com.example.tranquidescanso.adapters.MenuAdapter
 import com.example.tranquidescanso.model.MenuItem
+import com.example.tranquidescanso.ui.hotel.HotelActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,9 +34,35 @@ class MainActivity : AppCompatActivity() {
             MenuItem("SALIR", R.drawable.salir)
         )
 
-        // Adapter
+        // Adapter con acción al presionar cada item
         val adapter = MenuAdapter(menuItems) { item ->
-            // 👉 Aquí luego conectaremos la navegación a otras pantallas
+            when (item.titulo.uppercase()) {
+                "HOTEL" -> {
+                    val intent = Intent(this, HotelActivity::class.java)
+                    startActivity(intent)
+                }
+                "HUÉSPEDES" -> {
+                    // Aquí abrirías HuespedActivity
+                }
+                "RESERVAS" -> {
+                    // Aquí abrirías ReservasActivity
+                }
+                "HABITACIONES" -> {
+                    // Aquí abrirías HabitacionesActivity
+                }
+                "AGENCIA" -> {
+                    // Aquí abrirías AgenciaActivity
+                }
+                "SERVICIOS" -> {
+                    // Aquí abrirías ServiciosActivity
+                }
+                "ESTADÍSTICA" -> {
+                    // Aquí abrirías EstadisticaActivity
+                }
+                "SALIR" -> {
+                    finish() // Cierra la app
+                }
+            }
         }
 
         rvMenu.adapter = adapter

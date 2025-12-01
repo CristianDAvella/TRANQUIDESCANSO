@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/bg_naranja_oscuro"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvNombreHuesped"
+        android:text="Nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfairdisplayvariablefontwght"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tvTipoDocumento"
+        android:text="Tipo Doc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfairdisplayvariablefontwght"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/tvNumeroDocumento"
+        android:text="Número Doc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfairdisplayvariablefontwght"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/tvTelefono"
+        android:text="Teléfono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfairdisplayvariablefontwght"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnEditarHuesped"
+        android:text="Editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_naranja_oscuro"
+        android:textColor="@color/white"/>
+</LinearLayout>

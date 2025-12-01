@@ -9,6 +9,7 @@ import com.example.tranquidescanso.R
 import com.example.tranquidescanso.adapters.MenuAdapter
 import com.example.tranquidescanso.model.MenuItem
 import com.example.tranquidescanso.ui.hotel.HotelActivity
+import com.example.tranquidescanso.ui.huespedes.HuespedActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +43,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 "HUÉSPEDES" -> {
-                    // Aquí abrirías HuespedActivity
+                    val intent = Intent(this, HuespedActivity::class.java)
+                    startActivity(intent)
                 }
                 "RESERVAS" -> {
                     // Aquí abrirías ReservasActivity

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_agregar_huesped"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header común -->
+    <include layout="@layout/header"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Tipo de documento -->
+            <Spinner
+                android:id="@+id/spinnerTipoDocumento"
+                android:layout_width="match_parent"
+                android:background="@drawable/bg_naranja_claro"
+                android:layout_height="53dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Número de documento -->
+            <EditText
+                android:id="@+id/etNumeroDocumento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de documento"
+                android:background="@drawable/bg_naranja_claro"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Nombre -->
+            <EditText
+                android:id="@+id/etNombreHuesped"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre completo"
+                android:background="@drawable/bg_naranja_claro"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Telefónos dinámicos -->
+            <LinearLayout
+                android:id="@+id/llTelefonosContainer"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnAgregarTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar teléfono"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_naranja_oscuro"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"/>
+
+            <!-- Correo -->
+            <EditText
+                android:id="@+id/etCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:background="@drawable/bg_naranja_claro"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Botón guardar -->
+            <Button
+                android:id="@+id/btnGuardarHuesped"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar Huésped"
+                android:background="@drawable/bg_naranja_oscuro"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

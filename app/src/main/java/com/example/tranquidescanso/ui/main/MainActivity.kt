@@ -10,7 +10,8 @@ import com.example.tranquidescanso.adapters.MenuAdapter
 import com.example.tranquidescanso.model.MenuItem
 import com.example.tranquidescanso.ui.hotel.HotelActivity
 import com.example.tranquidescanso.ui.huespedes.HuespedActivity
-
+import com.example.tranquidescanso.ui.habitaciones.HabitacionActivity
+import com.example.tranquidescanso.ui.agencias.AgenciaActivity
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,12 +50,14 @@ class MainActivity : AppCompatActivity() {
                 "RESERVAS" -> {
                     // Aquí abrirías ReservasActivity
                 }
-                "HABITACIONES" -> {
-                    // Aquí abrirías HabitacionesActivity
+                "HABITACIONES" -> { // <--- Aquí redirigimos a Habitaciones
+                    val intent = Intent(this, HabitacionActivity::class.java)
+                    startActivity(intent)
                 }
-                "AGENCIA" -> {
-                    // Aquí abrirías AgenciaActivity
-                }
+                "AGENCIA"  -> { // <--- Aquí redirigimos a Habitaciones
+                val intent = Intent(this, AgenciaActivity::class.java)
+                startActivity(intent)
+            }
                 "SERVICIOS" -> {
                     // Aquí abrirías ServiciosActivity
                 }

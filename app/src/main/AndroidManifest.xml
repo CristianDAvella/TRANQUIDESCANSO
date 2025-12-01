@@ -13,6 +13,24 @@
         android:theme="@style/Theme.TRANQUIDESCANSO"
         tools:targetApi="31">
         <activity
+            android:name=".ui.agencias.AgregarAgenciaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.agencias.AgenciaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.habitaciones.EditarHabitacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.habitaciones.AgregarHabitacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.habitaciones.HabitacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.reservas.ReservasActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.huespedes.EditarHuespedActivity"
             android:exported="false" />
         <activity

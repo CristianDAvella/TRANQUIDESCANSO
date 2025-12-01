@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_habitacion"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <include layout="@layout/header"/>
+
+    <!-- Botón agregar habitación -->
+    <Button
+        android:id="@+id/btnAgregarHabitacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Agregar Habitación"
+        android:background="@drawable/bg_naranja_oscuro"
+        android:textColor="@color/white"
+        android:layout_margin="16dp"
+        android:padding="12dp"
+        app:backgroundTint="@null"/>
+
+    <!-- RecyclerView de habitaciones -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHabitaciones"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"/>
+</LinearLayout>

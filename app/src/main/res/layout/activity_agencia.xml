@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_agencia"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <include layout="@layout/header"/>
+
+    <Button
+        android:id="@+id/btnAgregarAgencia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="Crear Agencia"
+        android:background="@drawable/bg_naranja_oscuro"
+        android:textColor="@color/white"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@null" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAgencias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

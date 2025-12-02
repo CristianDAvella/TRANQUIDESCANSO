@@ -60,7 +60,7 @@
             android:name=".ui.huespedes.AgregarHuespedActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.huespedes.HuespedActivity"
+            android:name=".ui.huesped.HuespedActivity"
             android:exported="false" />
         <activity
             android:name=".ui.hotel.HistorialHotelActivity"

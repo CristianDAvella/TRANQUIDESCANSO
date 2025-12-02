@@ -31,57 +31,58 @@ class AgregarHuespedActivity : AppCompatActivity() {
         val etCorreo = findViewById<EditText>(R.id.etCorreo)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarHuesped)
 
-        // Spinner tipo de documento
-        val tipos = listOf("Cédula", "Tarjeta de Identidad", "Registro Civil", "Pasaporte")
+        // Tipos de documento unificados
+        val tipos = listOf("CC", "TI", "RC", "Pasaporte")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipos)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTipoDoc.adapter = spinnerAdapter
 
-        // Teléfonos dinámicos
+        // Teléfono inicial
         btnAgregarTelefono.setOnClickListener {
-            val nuevoEt = EditText(this)
-            nuevoEt.layoutParams = LinearLayout.LayoutParams(
+            val nuevo = EditText(this)
+            nuevo.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply { bottomMargin = 8 }
-            nuevoEt.setBackgroundResource(R.drawable.bg_naranja_claro)
-            nuevoEt.setPadding(12, 12, 12, 12)
-            nuevoEt.hint = "Teléfono"
-            llTelefonos.addView(nuevoEt)
-        }
 
-        // Primer campo de teléfono por defecto
+            nuevo.setBackgroundResource(R.drawable.bg_naranja_claro)
+            nuevo.setPadding(12, 12, 12, 12)
+            nuevo.hint = "Teléfono"
+
+            llTelefonos.addView(nuevo)
+        }
         btnAgregarTelefono.performClick()
 
-        // Guardar huesped
         btnGuardar.setOnClickListener {
-            val nombre = etNombre.text.toString().trim()
+            val nombre = etNombre.text.toString()
             val tipoDoc = spinnerTipoDoc.selectedItem.toString()
-            val numeroDoc = etNumeroDoc.text.toString().trim()
-            val telefonos = mutableListOf<String>()
-            for(i in 0 until llTelefonos.childCount) {
-                val et = llTelefonos.getChildAt(i) as EditText
-                val tel = et.text.toString().trim()
-                if(tel.isNotEmpty()) telefonos.add(tel)
-            }
-            val correo = etCorreo.text.toString().trim()
+            val numeroDoc = etNumeroDoc.text.toString()
+            val correo = etCorreo.text.toString()
 
-            if(nombre.isNotEmpty() && numeroDoc.isNotEmpty() && telefonos.isNotEmpty() && correo.isNotEmpty()){
-                val huesped = Huesped(
-                    id = 0,
-                    nombre = nombre,
-                    tipoDocumento = tipoDoc,
-                    numeroDocumento = numeroDoc,
-                    telefonos = telefonos,
-                    correo = correo
-                )
-                val intent = Intent()
-                intent.putExtra("huesped", huesped)
-                setResult(RESULT_OK, intent)
-                finish()
-            } else {
-                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
+            val telefonos = mutableListOf<String>()
+            for (i in 0 until llTelefonos.childCount) {
+                val tel = (llTelefonos.getChildAt(i) as EditText).text.toString()
+                if (tel.isNotEmpty()) telefonos.add(tel)
             }
+
+            if (nombre.isEmpty() || numeroDoc.isEmpty() || correo.isEmpty() || telefonos.isEmpty()) {
+                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val huesped = Huesped(
+                id = 0,
+                nombre = nombre,
+                tipoDocumento = tipoDoc,
+                numeroDocumento = numeroDoc,
+                telefonos = telefonos,
+                correo = correo
+            )
+
+            val intent = Intent()
+            intent.putExtra("huesped", huesped)
+            setResult(RESULT_OK, intent)
+            finish()
         }
     }
 }

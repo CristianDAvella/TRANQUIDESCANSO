@@ -23,16 +23,23 @@ class HuespedAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HuespedViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_huesped, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_huesped, parent, false)
         return HuespedViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: HuespedViewHolder, position: Int) {
         val huesped = huespedes[position]
+
         holder.tvNombre.text = huesped.nombre
         holder.tvTipoDoc.text = "Tipo: ${huesped.tipoDocumento}"
         holder.tvNumDoc.text = "Doc: ${huesped.numeroDocumento}"
-        holder.tvTelefonos.text = "Tel: ${huesped.telefonos.joinToString(", ")}"
+
+        holder.tvTelefonos.text =
+            if (!huesped.telefonos.isNullOrEmpty())
+                huesped.telefonos.joinToString(", ")
+            else
+                "Sin teléfonos"
 
         holder.btnEditar.setOnClickListener {
             onAction(huesped, "editar")

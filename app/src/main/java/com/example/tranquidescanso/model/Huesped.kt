@@ -9,9 +9,10 @@ data class Huesped(
     var numeroDocumento: String,
     var telefonos: MutableList<String>,
     var correo: String,
-    var tieneMascota: Boolean = false // opcional si quieres registrar mascotas
+    var tieneMascota: Boolean = false
 ) : Serializable {
-    // Propiedad calculada: es menor si el tipo de documento es "TI" o "RC"
+
+    // Es menor si el documento es Tarjeta de Identidad o Registro Civil
     val esMenor: Boolean
         get() = tipoDocumento.uppercase() == "TI" || tipoDocumento.uppercase() == "RC"
 }

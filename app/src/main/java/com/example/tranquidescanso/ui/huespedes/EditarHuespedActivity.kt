@@ -34,12 +34,12 @@ class EditarHuespedActivity : AppCompatActivity() {
         val etCorreo = findViewById<EditText>(R.id.etCorreo)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarHuesped)
 
-        val tipos = listOf("CC", "TI", "CE", "Pasaporte")
+        // MISMO orden que en agregar
+        val tipos = listOf("CC", "TI", "RC", "Pasaporte")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipos)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTipoDoc.adapter = spinnerAdapter
 
-        // Obtener huesped del intent
         huesped = intent.getSerializableExtra("huesped") as Huesped
         position = intent.getIntExtra("position", -1)
 
@@ -55,51 +55,56 @@ class EditarHuespedActivity : AppCompatActivity() {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply { bottomMargin = 8 }
+
             et.setBackgroundResource(R.drawable.bg_naranja_claro)
             et.setPadding(12,12,12,12)
             et.setText(tel)
+
             llTelefonos.addView(et)
         }
 
         btnAgregarTelefono.setOnClickListener {
-            val nuevoEt = EditText(this)
-            nuevoEt.layoutParams = LinearLayout.LayoutParams(
+            val nuevo = EditText(this)
+            nuevo.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply { bottomMargin = 8 }
-            nuevoEt.setBackgroundResource(R.drawable.bg_naranja_claro)
-            nuevoEt.setPadding(12,12,12,12)
-            nuevoEt.hint = "Teléfono"
-            llTelefonos.addView(nuevoEt)
+
+            nuevo.setBackgroundResource(R.drawable.bg_naranja_claro)
+            nuevo.setPadding(12,12,12,12)
+            nuevo.hint = "Teléfono"
+
+            llTelefonos.addView(nuevo)
         }
 
         btnGuardar.setOnClickListener {
-            val nombre = etNombre.text.toString().trim()
+            val nombre = etNombre.text.toString()
             val tipoDoc = spinnerTipoDoc.selectedItem.toString()
-            val numeroDoc = etNumeroDoc.text.toString().trim()
+            val numeroDoc = etNumeroDoc.text.toString()
+            val correo = etCorreo.text.toString()
+
             val telefonos = mutableListOf<String>()
-            for(i in 0 until llTelefonos.childCount) {
-                val et = llTelefonos.getChildAt(i) as EditText
-                val tel = et.text.toString().trim()
-                if(tel.isNotEmpty()) telefonos.add(tel)
+            for (i in 0 until llTelefonos.childCount) {
+                val tel = (llTelefonos.getChildAt(i) as EditText).text.toString()
+                if (tel.isNotEmpty()) telefonos.add(tel)
             }
-            val correo = etCorreo.text.toString().trim()
 
-            if(nombre.isNotEmpty() && numeroDoc.isNotEmpty() && telefonos.isNotEmpty() && correo.isNotEmpty()){
-                huesped.nombre = nombre
-                huesped.tipoDocumento = tipoDoc
-                huesped.numeroDocumento = numeroDoc
-                huesped.telefonos = telefonos
-                huesped.correo = correo
-
-                val intent = Intent()
-                intent.putExtra("huesped_actualizado", huesped)
-                intent.putExtra("position", position)
-                setResult(RESULT_OK, intent)
-                finish()
-            } else {
+            if (nombre.isEmpty() || numeroDoc.isEmpty() || correo.isEmpty() || telefonos.isEmpty()) {
                 Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            huesped.nombre = nombre
+            huesped.tipoDocumento = tipoDoc
+            huesped.numeroDocumento = numeroDoc
+            huesped.correo = correo
+            huesped.telefonos = telefonos
+
+            val intent = Intent()
+            intent.putExtra("huesped_actualizado", huesped)
+            intent.putExtra("position", position)
+            setResult(RESULT_OK, intent)
+            finish()
         }
     }
 }

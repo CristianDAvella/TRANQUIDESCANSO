@@ -9,7 +9,7 @@ import com.example.tranquidescanso.R
 import com.example.tranquidescanso.adapters.MenuAdapter
 import com.example.tranquidescanso.model.MenuItem
 import com.example.tranquidescanso.ui.hotel.HotelActivity
-import com.example.tranquidescanso.ui.huespedes.HuespedActivity
+import com.example.tranquidescanso.ui.huesped.HuespedActivity
 import com.example.tranquidescanso.ui.habitaciones.HabitacionActivity
 import com.example.tranquidescanso.ui.agencias.AgenciaActivity
 import com.example.tranquidescanso.ui.reservas.ReservasActivity

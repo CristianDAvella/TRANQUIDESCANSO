@@ -2,215 +2,104 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:orientation="vertical"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/header"/>
-
-        <!-- ====================== -->
-        <!--    DATOS DEL HUESPED   -->
-        <!-- ====================== -->
-        <TextView
-            android:text="Datos del huésped"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
         <EditText
             android:id="@+id/etNombre"
-            android:hint="Nombre del huésped"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"/>
+            android:layout_width="381dp"
+            android:layout_height="41dp"
+            android:background="@color/naranjaclaro"
+            android:layout_marginTop="15dp"
+            android:hint="Nombre del huésped" />
 
         <EditText
             android:id="@+id/etDocumento"
+            android:layout_width="380dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/naranjaclaro"
             android:hint="Número de documento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"/>
+            android:inputType="number" />
 
-        <!-- ====================== -->
-        <!--      HOTEL             -->
-        <!-- ====================== -->
-        <TextView
-            android:text="Hotel"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etHotel"
-            android:hint="Hotel donde se hospeda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"/>
-
-        <!-- ====================== -->
-        <!--        FECHAS          -->
-        <!-- ====================== -->
-        <TextView
-            android:text="Fechas"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="18dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spinnerHotel"
+            android:layout_width="382dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/naranjaclaro" />
 
         <EditText
             android:id="@+id/etFechaReserva"
-            android:hint="Fecha de reserva"
+            android:layout_width="378dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/naranjaclaro"
             android:focusable="false"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:hint="Fecha de reserva" />
 
         <EditText
             android:id="@+id/etFechaInicio"
-            android:hint="Fecha de inicio"
+            android:hint="Fecha inicio"
             android:focusable="false"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="41dp"
+            android:background="@color/naranjaclaro"
+            android:layout_marginTop="15dp"/>
 
         <EditText
             android:id="@+id/etFechaFin"
-            android:hint="Fecha de fin"
+            android:hint="Fecha fin"
             android:focusable="false"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="41dp"
+            android:background="@color/naranjaclaro"
+            android:layout_marginTop="15dp"/>
 
         <EditText
             android:id="@+id/etVencimiento"
-            android:hint="Vencimiento (hora)"
+            android:hint="Fecha de vencimiento"
             android:focusable="false"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="41dp"
+            android:background="@color/naranjaclaro"
+            android:layout_marginTop="15dp"/>
 
-        <!-- ====================== -->
-        <!--    DATOS HABITACIÓN    -->
-        <!-- ====================== -->
-        <TextView
-            android:text="Habitación"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etHabitacionNumero"
-            android:hint="Número habitación"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etTipoHabitacion"
-            android:hint="Tipo de habitación (Doble, Suite...)"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etCapacidad"
-            android:hint="Capacidad"
-            android:inputType="number"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etDescripcionHabitacion"
-            android:hint="Descripción"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/etEstadoHabitacion"
-            android:hint="Estado (Disponible / Ocupada)"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- ====================== -->
-        <!--      OTROS DATOS       -->
-        <!-- ====================== -->
         <EditText
             android:id="@+id/etCantidadPersonas"
             android:hint="Cantidad de personas"
             android:inputType="number"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="41dp"
+            android:background="@color/naranjaclaro"
+            android:layout_marginTop="15dp"/>
 
         <Switch
             android:id="@+id/swAnticipo"
             android:text="Anticipo pagado"
-            android:layout_marginTop="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/etEstadoReserva"
-            android:hint="Estado de la reserva"
-            android:background="@drawable/bg_naranja_claro"
-            android:padding="10dp"
-            android:layout_marginTop="12dp"
+        <Spinner
+            android:id="@+id/spinnerEstado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="41dp"
+            android:background="@color/naranjaclaro"
+            android:layout_marginTop="15dp"/>
 
-        <!-- BOTÓN GUARDAR -->
         <Button
             android:id="@+id/btnGuardar"
             android:text="Guardar cambios"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/naranjaoscuro"
-            android:textColor="@android:color/white"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_naranja_oscuro"
+            app:backgroundTint="@null"/>
 
     </LinearLayout>
-
 </ScrollView>

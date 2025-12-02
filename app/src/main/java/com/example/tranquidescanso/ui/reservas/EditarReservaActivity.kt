@@ -16,17 +16,18 @@ class EditarReservaActivity : AppCompatActivity() {
 
     private lateinit var etNombre: EditText
     private lateinit var etDocumento: EditText
-    private lateinit var etHotel: EditText
-
+    private lateinit var spinnerHotel: Spinner
     private lateinit var etFechaReserva: EditText
     private lateinit var etFechaInicio: EditText
     private lateinit var etFechaFin: EditText
     private lateinit var etVencimiento: EditText
-
     private lateinit var etCantidadPersonas: EditText
     private lateinit var swAnticipo: Switch
-    private lateinit var etEstadoReserva: EditText
+    private lateinit var spinnerEstado: Spinner
     private lateinit var btnGuardar: Button
+
+    private val hoteles = listOf("Hotel Paraíso", "Hotel Central", "Hotel Playa")
+    private val estados = listOf("Pendiente", "Confirmada", "Cancelada", "No usada", "Finalizada")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +39,11 @@ class EditarReservaActivity : AppCompatActivity() {
         if (reservaActual == null) {
             Toast.makeText(this, "Error cargando reserva", Toast.LENGTH_LONG).show()
             finish()
+            return
         }
 
         inicializarViews()
+        configurarSpinners()
         cargarDatosEnViews()
         configurarDatePickers()
         configurarBotonGuardar()
@@ -49,17 +52,25 @@ class EditarReservaActivity : AppCompatActivity() {
     private fun inicializarViews() {
         etNombre = findViewById(R.id.etNombre)
         etDocumento = findViewById(R.id.etDocumento)
-        etHotel = findViewById(R.id.etHotel)
-
+        spinnerHotel = findViewById(R.id.spinnerHotel)
         etFechaReserva = findViewById(R.id.etFechaReserva)
         etFechaInicio = findViewById(R.id.etFechaInicio)
         etFechaFin = findViewById(R.id.etFechaFin)
         etVencimiento = findViewById(R.id.etVencimiento)
-
         etCantidadPersonas = findViewById(R.id.etCantidadPersonas)
         swAnticipo = findViewById(R.id.swAnticipo)
-        etEstadoReserva = findViewById(R.id.etEstadoReserva)
+        spinnerEstado = findViewById(R.id.spinnerEstado)
         btnGuardar = findViewById(R.id.btnGuardar)
+    }
+
+    private fun configurarSpinners() {
+        spinnerHotel.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, hoteles).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+
+        spinnerEstado.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, estados).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
     }
 
     private fun cargarDatosEnViews() {
@@ -67,7 +78,9 @@ class EditarReservaActivity : AppCompatActivity() {
 
         etNombre.setText(r.huesped.nombre)
         etDocumento.setText(r.huesped.numeroDocumento)
-        etHotel.setText(r.hotel)
+
+        spinnerHotel.setSelection(hoteles.indexOf(r.hotel).takeIf { it >= 0 } ?: 0)
+        spinnerEstado.setSelection(estados.indexOf(r.estado).takeIf { it >= 0 } ?: 0)
 
         etFechaReserva.setText(r.fechaReserva)
         etFechaInicio.setText(r.fechaInicio)
@@ -76,22 +89,20 @@ class EditarReservaActivity : AppCompatActivity() {
 
         etCantidadPersonas.setText(r.cantidadPersonas.toString())
         swAnticipo.isChecked = r.anticipoPagado
-        etEstadoReserva.setText(r.estado)
     }
 
     private fun configurarDatePickers() {
-        val campos = listOf(etFechaReserva, etFechaInicio, etFechaFin, etVencimiento)
+        val campos = listOf(etFechaReserva, etFechaInicio, etFechaFin)
         campos.forEach { editText ->
             editText.setOnClickListener {
                 val calendar = Calendar.getInstance()
-                val dialog = DatePickerDialog(
+                DatePickerDialog(
                     this,
                     { _, y, m, d -> editText.setText("%02d/%02d/%04d".format(d, m + 1, y)) },
                     calendar.get(Calendar.YEAR),
                     calendar.get(Calendar.MONTH),
                     calendar.get(Calendar.DAY_OF_MONTH)
-                )
-                dialog.show()
+                ).show()
             }
         }
     }
@@ -102,16 +113,14 @@ class EditarReservaActivity : AppCompatActivity() {
 
             r.huesped.nombre = etNombre.text.toString()
             r.huesped.numeroDocumento = etDocumento.text.toString()
-            r.hotel = etHotel.text.toString()
-
+            r.hotel = spinnerHotel.selectedItem.toString()
+            r.estado = spinnerEstado.selectedItem.toString()
             r.fechaReserva = etFechaReserva.text.toString()
             r.fechaInicio = etFechaInicio.text.toString()
             r.fechaFin = etFechaFin.text.toString()
             r.vencimiento = etVencimiento.text.toString()
-
             r.cantidadPersonas = etCantidadPersonas.text.toString().toIntOrNull() ?: r.cantidadPersonas
             r.anticipoPagado = swAnticipo.isChecked
-            r.estado = etEstadoReserva.text.toString()
 
             Toast.makeText(this, "Reserva actualizada", Toast.LENGTH_SHORT).show()
             finish()
